@@ -59,4 +59,76 @@
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
 
+const readlineSync = require("readline-sync");
+
+// Part A - Generate a single multiplication table
+function singleTable(number)
+{
+    console.log("\nMultiplication Table for " + number + ":");
+
+    for (let i = 1; i <= 12; i++)
+    {
+        console.log(number + " x " + i + " = " + (number * i));
+    }
+}
+
+
+// Part B - Generate tables from 1 to N
+function tablesFromOneToN(n)
+{
+    for (let number = 1; number <= n; number++)
+    {
+        console.log("\nMultiplication Table for " + number + ":");
+
+        for (let i = 1; i <= 12; i++)
+        {
+            console.log(number + " x " + i + " = " + (number * i));
+        }
+
+        console.log("---------------------------");
+    }
+}
+
+
+// Main function
+function main()
+{
+    console.log("1. Single Multiplication Table");
+    console.log("2. Tables from 1 to N");
+
+    let choice = readlineSync.questionInt("Enter your choice: ");
+
+    if (choice === 1)
+    {
+        let number = readlineSync.questionInt("Enter a number: ");
+
+        if (number <= 0)
+        {
+            console.log("Error: Number must be positive.");
+            return;
+        }
+
+        singleTable(number);
+    }
+
+    else if (choice === 2)
+    {
+        let n = readlineSync.questionInt("Enter N: ");
+
+        if (n <= 0)
+        {
+            console.log("Error: Number must be positive.");
+            return;
+        }
+
+        tablesFromOneToN(n);
+    }
+
+    else
+    {
+        console.log("Error: Invalid choice.");
+    }
+}
+
+main();
 
